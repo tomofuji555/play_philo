@@ -11,19 +11,49 @@
 /* ************************************************************************** */
 
 #include "philo.h"
+#include <stdbool.h>
 
 bool  init_arg(int argc, char **argv, t_exec *exec)
 {
   if (argc != 5 && argc != 6)
     return (FALSE);
-  exec->p_num = ft_atoi (argv[1]);
+  exec->num = ft_atoi (argv[1]);
   exec->die = ft_atoi (argv[2]);
   exec->eat = ft_atoi (argv[3]);
   exec->sleep = ft_atoi (argv[4]);
-  if (!exec->p_num || !exec->die || !exec->eat \
+  if (!exec->num || !exec->die || !exec->eat \
       || !exec->sleep)
     return (FALSE);
   if (argc == 6)
     exec->al_eat = ft_atoi (argv[5]);
+  return (TRUE);
+}
+
+bool  init_fork(t_exec *exec)
+{
+  int i;
+
+  i = 0;
+  exec->fork = (pthread_mutex_t *)malloc(sizeof (pthread_mutex_t) * (exec->num));
+  if (exec->fork == NULL)
+  {
+    free (exec);
+    return (FALSE);
+  }
+  while (i < exec->num)
+  {
+    pthread_create (&fork[i], NULL, do, NULL);
+    i++;
+  }
+  return (TRUE);
+}
+
+
+bool  init_main(int argc, char **argv, t_exec *exec)
+{
+  if (init_arg (argc, argv, exec) == FALSE)
+    return (FALSE);
+  if (init_fork (exec) == FALSE)
+    return (FALSE);
   return (TRUE);
 }

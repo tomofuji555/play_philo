@@ -13,7 +13,7 @@
 NAME = philo
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
-PFLAGS = -pthread
+PFLAGS = -lpthread
 SRCS = main.c init.c utils.c
 OBJS = $(SRCS:.c=.o)
 

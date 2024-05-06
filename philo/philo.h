@@ -18,18 +18,25 @@
 # include <pthread.h>
 # include <limits.h>
 # include <stdbool.h>
+#include <sys/_pthread/_pthread_mutex_t.h>
 
 #define TRUE 1
 #define FALSE 0
 
 typedef struct s_exec
 {
-  int p_num;
-  int die;
-  int eat;
-  int sleep;
-  int al_eat;
+  int             num;
+  int             die;
+  int             eat;
+  int             sleep;
+  int             al_eat;
+  pthread_mutex_t *fork;
 } t_exec;
+
+//typedef struct s_fork
+//{
+//
+//} t_fork;
 
 int ft_atoi(const char *str);
 bool  init_arg(int argc, char **argv, t_exec *exec);
