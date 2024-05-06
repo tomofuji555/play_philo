@@ -19,6 +19,8 @@ int main(int argc, char **argv)
   exec = (t_exec *)malloc(sizeof(t_exec));
   if (exec == NULL)
     return (1);
-  init_arg (argc, argv, exec);
+  if (init_arg (argc, argv, exec) == FALSE)
+    return (1);
+  
   printf ("%d\n", exec->p_num);
 }

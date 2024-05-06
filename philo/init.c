@@ -16,13 +16,13 @@ bool  init_arg(int argc, char **argv, t_exec *exec)
 {
   if (argc != 5 && argc != 6)
     return (FALSE);
-  exec = (t_exec *)malloc(sizeof (t_exec));
-  if (exec == NULL)
-    return (FALSE);
   exec->p_num = ft_atoi (argv[1]);
   exec->die = ft_atoi (argv[2]);
   exec->eat = ft_atoi (argv[3]);
   exec->sleep = ft_atoi (argv[4]);
+  if (!exec->p_num || !exec->die || !exec->eat \
+      || !exec->sleep)
+    return (FALSE);
   if (argc == 6)
     exec->al_eat = ft_atoi (argv[5]);
   return (TRUE);
