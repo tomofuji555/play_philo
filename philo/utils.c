@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tofujiwa <tofujiwa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tofujiwa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/01 18:36:25 by tofujiwa          #+#    #+#             */
-/*   Updated: 2023/02/14 17:49:41 by tofujiwa         ###   ########.fr       */
+/*   Created: 2024/05/06 14:10:12 by tofujiwa          #+#    #+#             */
+/*   Updated: 2024/05/06 14:10:14 by tofujiwa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "philo.h"
 
 static int	st_isspace(const char *str, size_t *pi)
 {
@@ -87,11 +87,3 @@ int	ft_atoi(const char *str)
 	}
 	return ((int)(num * sign));
 }
-
-// #include <string.h>
-// #include <stdio.h>
-// int main(void)
-// {
-// 	printf("%d\n",atoi("9223372036854775808"));
-// 	printf("%d\n",ft_atoi("9223372036854775808"));
-// }

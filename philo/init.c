@@ -1,24 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tofujiwa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/04 15:22:06 by tofujiwa          #+#    #+#             */
-/*   Updated: 2024/05/04 15:22:08 by tofujiwa         ###   ########.fr       */
+/*   Created: 2024/05/06 13:59:32 by tofujiwa          #+#    #+#             */
+/*   Updated: 2024/05/06 13:59:34 by tofujiwa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int main(int argc, char **argv)
+bool  init_arg(int argc, char **argv, t_exec *exec)
 {
-  t_exec  *exec;
-
-  exec = (t_exec *)malloc(sizeof(t_exec));
+  if (argc != 5 && argc != 6)
+    return (FALSE);
+  exec = (t_exec *)malloc(sizeof (t_exec));
   if (exec == NULL)
-    return (1);
-  init_arg (argc, argv, exec);
-  printf ("%d\n", exec->p_num);
+    return (FALSE);
+  exec->p_num = ft_atoi (argv[1]);
+  exec->die = ft_atoi (argv[2]);
+  exec->eat = ft_atoi (argv[3]);
+  exec->sleep = ft_atoi (argv[4]);
+  if (argc == 6)
+    exec->al_eat = ft_atoi (argv[5]);
+  return (TRUE);
 }
