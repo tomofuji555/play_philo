@@ -40,5 +40,8 @@ typedef struct s_exec
 
 int ft_atoi(const char *str);
 bool  init_arg(int argc, char **argv, t_exec *exec);
+bool  init_fork(t_exec *exec);
+bool  init_main(int argc, char **argv, t_exec *exec);
+void  run(int *cnt);
 
 #endif

@@ -21,6 +21,4 @@ int main(int argc, char **argv)
     return (1);
   if (init_main (argc, argv, exec) == FALSE)
     return (1);
-  int i = 0;
-  printf ("%d\n", exec->fork);  
 }

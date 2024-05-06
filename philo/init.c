@@ -32,8 +32,10 @@ bool  init_arg(int argc, char **argv, t_exec *exec)
 bool  init_fork(t_exec *exec)
 {
   int i;
+  int cnt;
 
   i = 0;
+  cnt = 0;
   exec->fork = (pthread_mutex_t *)malloc(sizeof (pthread_mutex_t) * (exec->num));
   if (exec->fork == NULL)
   {
@@ -42,12 +44,21 @@ bool  init_fork(t_exec *exec)
   }
   while (i < exec->num)
   {
-    pthread_create (&fork[i], NULL, do, NULL);
+    pthread_create (exec->fork[i], NULL, run, &cnt);
     i++;
   }
   return (TRUE);
 }
 
+void  run(int *cnt)
+{
+  int i = 0;
+  while (i < 100)
+  {
+    (*cnt)++;
+    i++;
+  }
+}
 
 bool  init_main(int argc, char **argv, t_exec *exec)
 {
