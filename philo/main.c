@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tofujiwa <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: tofujiwa <tofujiwa@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 15:22:06 by tofujiwa          #+#    #+#             */
-/*   Updated: 2024/05/04 15:22:08 by tofujiwa         ###   ########.fr       */
+/*   Updated: 2024/05/18 20:30:27 by tofujiwa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,5 @@ int	main(int argc, char **argv)
 		//return (1);
 	if (init_main (argc, argv) == FALSE)
 		return (1);
-
+  return (0);
 }

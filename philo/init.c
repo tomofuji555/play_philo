@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tofujiwa <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: tofujiwa <tofujiwa@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 13:59:32 by tofujiwa          #+#    #+#             */
-/*   Updated: 2024/05/06 13:59:34 by tofujiwa         ###   ########.fr       */
+/*   Updated: 2024/05/18 20:43:11 by tofujiwa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ bool	init_arg(int argc, char **argv, t_exec *exec)
 	int i = 0;
 	if (argc != 5 && argc != 6)
 		return (FALSE);
+  //printf("num : %d\n", exec[i].num);
 	while (i < ft_atoi(argv[1]))
 	{
 		exec[i].num = ft_atoi (argv[1]);
@@ -45,9 +46,24 @@ bool	init_fork(t_exec *exec)
 		free (exec);
 		return (FALSE);
 	}
+	while(i < exec_num)
+	{
+		if (i == 1)
+			exec->right = fork[exec_num]
+		else	
+			exec->right = fork[i - 1]
+		exec->left = fork[i];	
+		exec->right 
+	}
 	while (i < exec->num)
 	{
 		pthread_create (&threads[i], NULL, run, &exec[i]);
+		i++;
+	}
+	i = 0;
+	while (i < exec->num)
+	{
+		pthread_join(threads[i], NULL); //waitみたいなもん
 		i++;
 	}
 	return (TRUE);
@@ -55,7 +71,8 @@ bool	init_fork(t_exec *exec)
 
 void	print_exec(t_exec *args)
 {
-	printf ("num : %d, die : %d, eat : %d, sleep : %d, al_eat : %d\n", args->num, args->die, args->eat, args->sleep, args->al_eat);
+	printf ("num : %d, die : %d, eat : %d, sleep : %d, al_eat : %d\n",  
+         args->num, args->die, args->eat, args->sleep, args->al_eat);
 }
 
 void	*run(void *args)

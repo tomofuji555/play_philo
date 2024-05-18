@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tofujiwa <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: tofujiwa <tofujiwa@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 15:20:54 by tofujiwa          #+#    #+#             */
-/*   Updated: 2024/05/04 15:20:56 by tofujiwa         ###   ########.fr       */
+/*   Updated: 2024/05/18 20:46:56 by tofujiwa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,10 @@
 #define TRUE 1
 #define FALSE 0
 
+#define my_catch
+#define my_not_catch
+#define nobody_catch
+
 typedef struct s_exec
 {
   int             num;
@@ -32,6 +36,13 @@ typedef struct s_exec
   int             al_eat;
   pthread_mutex_t *fork;
 } t_exec;
+
+typedef struct s_fork
+{
+  pthread_mutex_t *fork;
+  int state;
+  int val
+} t_fork;
 
 //typedef struct s_fork
 //{
