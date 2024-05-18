@@ -18,7 +18,7 @@
 # include <pthread.h>
 # include <limits.h>
 # include <stdbool.h>
-#include <sys/_pthread/_pthread_mutex_t.h>
+# include <sys/_pthread/_pthread_mutex_t.h>
 
 #define TRUE 1
 #define FALSE 0
@@ -38,10 +38,10 @@ typedef struct s_exec
 //
 //} t_fork;
 
-int ft_atoi(const char *str);
-bool  init_arg(int argc, char **argv, t_exec *exec);
-bool  init_fork(t_exec *exec);
-bool  init_main(int argc, char **argv, t_exec *exec);
-void  run(int *cnt);
+int		ft_atoi(const char *str);
+bool	init_arg(int argc, char **argv, t_exec *exec);
+bool	init_fork(t_exec *exec);
+bool	init_main(int argc, char **argv, t_exec *exec);
+void	run(int *cnt);
 
 #endif
