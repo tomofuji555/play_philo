@@ -14,11 +14,14 @@
 
 int	main(int argc, char **argv)
 {
-	t_exec	*exec;
+	//t_exec	*exec;
 
-	exec = (t_exec *)malloc(sizeof(t_exec));
-	if (exec == NULL)
+	//exec = (t_exec *)malloc(sizeof(t_exec));
+	//if (exec == NULL)
+		//return (1);
+	//if (init_main (argc, argv, exec) == FALSE)
+		//return (1);
+	if (init_main (argc, argv) == FALSE)
 		return (1);
-	if (init_main (argc, argv, exec) == FALSE)
-	return (1);
+
 }
