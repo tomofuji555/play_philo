@@ -12,16 +12,34 @@
 
 #include "philo.h"
 
+//init_mainを全てmainで書く必要があるかも
+
+bool args_check(int argc, char **argv)
+{
+	int num = 0;
+	if (argc != 5 && argc != 6)
+		return (FALSE);
+	if (argc >= 0)
+		num = ft_atoi (argv[1]);
+	if (num == 0)
+		return (FALSE);
+	return (TRUE);
+}
+
 int	main(int argc, char **argv)
 {
-	//t_exec	*exec;
+	t_exec	*exec;
+	t_philo	*philo;
 
-	//exec = (t_exec *)malloc(sizeof(t_exec));
-	//if (exec == NULL)
-		//return (1);
-	//if (init_main (argc, argv, exec) == FALSE)
-		//return (1);
-	if (init_main (argc, argv) == FALSE)
+	if (args_check(argc, argv) == FALSE)
 		return (1);
+	exec = (t_exec *)malloc(sizeof(t_exec) * ft_atoi(argv[1]));
+	philo = (t_philo *)malloc(sizeof(t_philo) * ft_atoi(argv[1]));
+	if (exec == NULL)
+		return (1);
+	if (init_main (argc, argv, exec, philo) == FALSE)
+		return (1);
+	//if (init_main (argc, argv) == FALSE)
+		//return (1);
   return (0);
 }
