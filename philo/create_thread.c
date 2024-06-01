@@ -3,28 +3,39 @@
 /*                                                        :::      ::::::::   */
 /*   create_thread.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: username <username@student.your42netw      +#+  +:+       +#+        */
+/*   By: tofujiwa <tofujiwa@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 15:50:33 by username          #+#    #+#             */
-/*   Updated: 2024/05/19 15:50:47 by username         ###   ########.fr       */
+/*   Updated: 2024/06/01 18:17:49 by tofujiwa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	create_thread(t_exec *exec)
+int	create_thread_wrap(pthread_t *thread, void *(*routine)(void *), void *arg)
+{
+	int	rt;
+
+	rt = pthread_create(thread, NULL, routine, arg);
+	if (rt != 0)
+		printf("Error: pthread_create() failed\n");
+	return (rt);
+}
+
+void	create_thread(t_philo *philo)
 {
 	int			i;
-	pthread_t	thread[exec->num];
+	pthread_t	thread[philo->exec->num];
 
 	i = 0;
-	while (i < exec->num)
+	// printf ("num: %d\n", philo->exec->num);
+	while (i < philo->exec->num)
 	{
-		pthread_create (&thread[i], NULL, run, &exec[i]);
+		create_thread_wrap (&thread[i], run, &philo[i]);
 		i++;
 	}
 	i = 0;
-	while (i < exec->num)
+	while (i < philo->exec->num)
 	{
 		pthread_join(thread[i], NULL); //waitみたいなもん↲
 		i++;

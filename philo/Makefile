@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tofujiwa <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: tofujiwa <tofujiwa@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/06 14:11:14 by tofujiwa          #+#    #+#              #
-#    Updated: 2024/05/06 14:11:16 by tofujiwa         ###   ########.fr        #
+#    Updated: 2024/06/01 17:49:50 by tofujiwa         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = philo
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 PFLAGS = -lpthread
-SRCS = main.c init.c utils.c create_thread.c
+SRCS = main.c init.c utils.c create_thread.c free.c
 OBJS = $(SRCS:.c=.o)
 
 $(NAME): $(OBJS)
