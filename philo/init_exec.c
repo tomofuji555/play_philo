@@ -34,7 +34,10 @@ t_exec	*init_exec(int argc, char **argv)
 		else
 			exec[i].must_eat = -1;
 		if (!exec[i].num || !exec[i].die || !exec[i].eat || !exec[i].sleep)
-			return (NULL);
+		{
+			printf("Error\n");
+			return (free_all (exec, NULL, NULL, NULL));
+		}
 		i++;
 	}
 	return (exec);

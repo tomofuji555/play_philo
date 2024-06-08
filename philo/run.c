@@ -12,12 +12,6 @@
 
 #include "philo.h"
 
-// void	print_philo(t_philo *args)
-// {
-// 	printf ("num : %d, die : %d, eat : %d, sleep : %d, must_eat : %d \n"
-// , args->exec->num, args->exec->die, args->exec->eat, args->exec->sleep, args->exec->must_eat);
-// }
-
 static void	think(t_philo *philo, t_exec *exec)
 {
 	printf("%lu %d is thinking\n", \
@@ -55,21 +49,6 @@ static void	take_eat_release_sleep(t_philo *philo, t_exec *exec, t_share *share)
 	do_sleep(philo, exec);
 }
 
-// void	*run(void *arg)
-// {
-// 	t_philo	*philo;
-// 	// t_exec	*exec;
-
-// 	philo = (t_philo *)arg;
-// 	while (TRUE)
-// 	{
-// 		while (!can_take_pair_forks(philo))
-// 			usleep(100);
-// 		take_eat_release_sleep(philo, philo->exec);
-// 	}
-// 	return (NULL);
-// }
-
 // static void    print_philo(t_philo *philo)
 // {
 // 	pthread_mutex_lock(&(philo->share->lock)); 
@@ -89,7 +68,6 @@ static void	take_eat_release_sleep(t_philo *philo, t_exec *exec, t_share *share)
 void	*run(void *arg)
 {
 	t_philo	*philo;
-	// t_exec	*exec;
 
 	philo = (t_philo *)arg;
 	philo->last_eat_time = philo->exec->start_time;

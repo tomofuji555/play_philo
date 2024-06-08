@@ -6,7 +6,7 @@
 /*   By: tofujiwa <tofujiwa@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 15:50:33 by username          #+#    #+#             */
-/*   Updated: 2024/06/08 17:31:47 by tofujiwa         ###   ########.fr       */
+/*   Updated: 2024/06/08 18:03:28 by tofujiwa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,19 +18,17 @@ int	create_thread_wrap(pthread_t *thread, void *(*routine)(void *), void *arg)
 
 	rt = pthread_create(thread, NULL, routine, arg);
 	if (rt != 0)
-		printf("Error: pthread_create() failed\n");
+		printf("Error\n");
 	return (rt);
 }
 
 void	create_thread(t_philo *philo)
 {
 	int			i;
-	// pthread_t	thread[philo->exec->num];
 	pthread_t	*thread;
 
 	i = 0;
 	thread = (pthread_t *)malloc(sizeof(thread) * philo->exec->num);
-	// printf ("num: %d\n", philo->exec->num);
 	while (i < philo->exec->num)
 	{
 		create_thread_wrap (&thread[i], run, &philo[i]);

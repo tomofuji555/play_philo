@@ -6,7 +6,7 @@
 /*   By: tofujiwa <tofujiwa@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 09:57:19 by username          #+#    #+#             */
-/*   Updated: 2024/06/08 17:25:27 by tofujiwa         ###   ########.fr       */
+/*   Updated: 2024/06/08 17:58:18 by tofujiwa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,4 @@ void	*free_all(void *exec, void *philo, void *fork, void *share)
 	if (share != NULL)
 		free(share);
 	return (NULL);
-	// int i;
-
-	// i = 0;
-	// while (i < exec->num)
-	// {
-	// 	pthread_mutex_destroy(&fork[i].lock);
-	// 	i++;
-	// }
 }

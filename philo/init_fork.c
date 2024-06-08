@@ -71,7 +71,7 @@ t_fork	*init_fork(t_exec *exec)
 		return(free_all(exec, NULL, NULL, NULL));
 	last_eat_id = set_last_eat_id_main(exec->num);
 	if (!last_eat_id)
-		return (free_all(fork, NULL, NULL, NULL));
+		return (free_all(fork, exec, NULL, NULL));
 	while (i < exec->num)
 	{
 		fork[i].state = 0;

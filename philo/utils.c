@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tofujiwa <tofujiwa@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: tofujiwa <tofujiwa@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 14:10:12 by tofujiwa          #+#    #+#             */
-/*   Updated: 2024/06/02 17:24:28 by tofujiwa         ###   ########.fr       */
+/*   Updated: 2024/06/08 17:59:32 by tofujiwa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	init_mutex(pthread_mutex_t *mutex)
 
 t_ms get_time(void)
 {
-    struct timeval tv;
-    gettimeofday(&tv, NULL);
-    return (t_ms)(tv.tv_sec * 1000 + tv.tv_usec / 1000);
+	struct timeval tv;
+	gettimeofday(&tv, NULL);
+	return (t_ms)(tv.tv_sec * 1000 + tv.tv_usec / 1000);
 }

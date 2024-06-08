@@ -38,7 +38,6 @@ int	ft_atoi(const char *str)
 {
 	size_t	i;
 	long	num;
-	// sign = st_isspace(str, &pi);
 	i = 0;
 	num = 0;
 	while (str[i] && str[i] >= '0' && str[i] <= '9')
