@@ -18,34 +18,29 @@
 // , args->exec->num, args->exec->die, args->exec->eat, args->exec->sleep, args->exec->must_eat);
 // }
 
-
-static void	take_fork(t_philo *philo, t_exec *exec)
+static void	think(t_philo *philo, t_exec *exec)
 {
-	printf("%lu %d has taken a fork\n", \
+	printf("%lu %d is thinking\n", \
 		get_time() - exec->start_time, philo->id);
 }
 
-static void	release_fork(t_fork *fork, t_philo *philo)
+static bool	can_take_fork(t_fork *fork, t_philo *philo)
 {
+	bool	ret;
+
 	pthread_mutex_lock(&(fork->lock));
-	fork->last_eat_id = philo->id;
+	if (fork->last_eat_id != philo->id)
+		ret = TRUE;
+	else
+		ret = FALSE;
 	pthread_mutex_unlock(&(fork->lock));
+	return (ret);
 }
 
-static void	do_eat(t_philo *philo, t_exec *exec)
+static bool	can_take_pair_forks(t_philo *philo)
 {
-	philo->last_eat_time = get_time();
-	printf("%lu %d is eating\n", \
-		philo->last_eat_time - exec->start_time, philo->id);
-	// msleep(exec->eat, philo, exec);
-	philo->eat_count++;
-}
-
-static void	do_sleep(t_philo *philo, t_exec *exec)
-{
-	printf("%lu %d is sleeping\n", \
-		get_time() - exec->start_time, philo->id);
-	// msleep(exec->sleep, philo, exec);
+	return (can_take_fork(philo->left, philo)
+		&& can_take_fork(philo->right, philo));
 }
 
 static void	take_eat_release_sleep(t_philo *philo, t_exec *exec)
@@ -60,16 +55,40 @@ static void	take_eat_release_sleep(t_philo *philo, t_exec *exec)
 	do_sleep(philo, exec);
 }
 
+// void	*run(void *arg)
+// {
+// 	t_philo	*philo;
+// 	// t_exec	*exec;
+
+// 	philo = (t_philo *)arg;
+// 	while (TRUE)
+// 	{
+// 		while (!can_take_pair_forks(philo))
+// 			usleep(100);
+// 		take_eat_release_sleep(philo, philo->exec);
+// 	}
+// 	return (NULL);
+// }
+
 void	*run(void *arg)
 {
 	t_philo	*philo;
 	// t_exec	*exec;
 
 	philo = (t_philo *)arg;
-	while (TRUE)
+	philo->last_eat_time = philo->exec->start_time;
+	while (!is_someone_dead(philo->share) \
+			&& !is_dead(*philo, philo->share, philo->exec) \
+			&& philo->eat_count < philo->exec->must_eat)
 	{
-		while (!can_take_pair_forks(philo))
+		think(philo, philo->exec);
+		while (!can_take_pair_forks(philo) && 
+				!is_someone_dead(philo->share)
+				&& !is_dead(*philo, philo->share, philo->exec))
 			usleep(100);
+		if (!is_someone_dead(philo->share) \
+				&& !is_dead(*philo, philo->share, philo->exec))
+			return (NULL);
 		take_eat_release_sleep(philo, philo->exec);
 	}
 	return (NULL);

@@ -12,21 +12,32 @@
 
 #include "philo.h"
 
-static bool	can_take_fork(t_fork *fork, t_philo *philo)
+void	take_fork(t_philo *philo, t_exec *exec)
 {
-	bool	ret;
+	printf("%lu %d has taken a fork\n", \
+		get_time() - exec->start_time, philo->id);
+}
 
+void	release_fork(t_fork *fork, t_philo *philo)
+{
 	pthread_mutex_lock(&(fork->lock));
-	if (fork->last_eat_id != philo->id)
-		ret = TRUE;
-	else
-		ret = FALSE;
+	fork->last_eat_id = philo->id;
 	pthread_mutex_unlock(&(fork->lock));
-	return (ret);
 }
 
-bool	can_take_pair_forks(t_philo *philo)
+void	do_eat(t_philo *philo, t_exec *exec)
 {
-	return (can_take_fork(philo->left, philo)
-		&& can_take_fork(philo->right, philo));
+	philo->last_eat_time = get_time();
+	printf("%lu %d is eating\n", \
+		philo->last_eat_time - exec->start_time, philo->id);
+	// msleep(exec->eat, philo, exec);
+	philo->eat_count++;
 }
+
+void	do_sleep(t_philo *philo, t_exec *exec)
+{
+	printf("%lu %d is sleeping\n", \
+		get_time() - exec->start_time, philo->id);
+	// msleep(exec->sleep, philo, exec);
+}
+

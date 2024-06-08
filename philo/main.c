@@ -6,7 +6,7 @@
 /*   By: tofujiwa <tofujiwa@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 15:22:06 by tofujiwa          #+#    #+#             */
-/*   Updated: 2024/06/02 16:59:46 by tofujiwa         ###   ########.fr       */
+/*   Updated: 2024/06/08 15:34:21 by tofujiwa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int	sub_main(int argc, char **argv)
 	philo = init_philo(exec, fork, share);
 	if (philo == NULL)
 		return (0);
-	exec->start_time = get_time();
+	philo->exec->start_time = get_time();
 	create_thread(philo);
 	return (1);
 }

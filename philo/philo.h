@@ -6,7 +6,7 @@
 /*   By: tofujiwa <tofujiwa@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 15:20:54 by tofujiwa          #+#    #+#             */
-/*   Updated: 2024/06/02 17:33:51 by tofujiwa         ###   ########.fr       */
+/*   Updated: 2024/06/08 15:25:25 by tofujiwa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,11 @@
 
 typedef unsigned long t_ms;
 
-// typedef struct s_m
-// {
-// 	unsigned long	sec;
-// 	unsigned long	usec;
-// }	t_m;
+typedef struct s_m
+{
+	unsigned long	sec;
+	unsigned long	usec;
+}	t_m;
 
 typedef struct s_fork
 {
@@ -93,7 +93,7 @@ t_philo	*init_philo(t_exec *exec, t_fork *fork, t_share *share);
 //bool	init_main(int argc, char **argv);
 int		sub_main(int argc, char **argv);
 bool 	args_check(int argc, char **argv);
-bool	can_take_pair_forks(t_philo *philo);
+// bool	can_take_pair_forks(t_philo *philo);
 int		create_thread_wrap(pthread_t *thread, void *(*routine)(void *), void *arg);
 void	*run(void *exec);
 t_ms	get_time(void);
@@ -101,5 +101,14 @@ void	print_exec(t_philo *args);
 bool	args_check(int argc, char **argv);
 void	create_thread(t_philo *philo);
 void	*free_all(void *exec, void *philo, void *fork, void *share);
+void    msleep(int ms_time, t_philo philo, t_share *share, t_exec *exec);
+bool    is_dead(t_philo philo, t_share *share, t_exec *exec);
+bool    is_someone_dead(t_share *share);
+void	take_fork(t_philo *philo, t_exec *exec);
+void	release_fork(t_fork *fork, t_philo *philo);
+void	do_eat(t_philo *philo, t_exec *exec);
+void	do_sleep(t_philo *philo, t_exec *exec);
+
+// void	think(t_philo *philo, t_exec *exec);
 
 #endif
