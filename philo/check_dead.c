@@ -12,20 +12,20 @@
 
 #include "philo.h"
 
-void    msleep(int ms_time, t_philo philo, t_share *share, t_exec *exec)
-{
-    t_ms    limit; //終わらせたい時間
+// void    msleep(int ms_time, t_philo philo, t_share *share, t_exec *exec)
+// {
+//     t_ms    limit; //終わらせたい時間
 
-    limit = get_time() + ms_time;
-    if (ms_time == 0)
-        return ;
-    while (!is_someone_dead(share) \
-        && !is_dead(philo, share, exec) \
-        && get_time() < limit)
-        usleep(100);
-}
+//     limit = get_time() + ms_time;
+//     if (ms_time == 0)
+//         return ;
+//     while (!is_someone_dead(share) \
+//         && !is_dead(philo, share, exec) \
+//         && get_time() < limit)
+//         usleep(100);
+// }
 
-bool    is_dead(t_philo philo, t_share *share, t_exec *exec)
+bool	is_dead(t_philo philo, t_share *share, t_exec *exec)
 {
 	if ((int)(get_time() - philo.last_eat_time) > exec->die)
 	{
@@ -38,7 +38,7 @@ bool    is_dead(t_philo philo, t_share *share, t_exec *exec)
 	return (FALSE);
 }
 
-bool    is_someone_dead(t_share *share)
+bool	is_someone_dead(t_share *share)
 {
 	bool	ret;
 

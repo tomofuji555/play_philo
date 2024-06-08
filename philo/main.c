@@ -3,14 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tofujiwa <tofujiwa@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: tofujiwa <tofujiwa@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 15:22:06 by tofujiwa          #+#    #+#             */
-/*   Updated: 2024/06/08 15:34:21 by tofujiwa         ###   ########.fr       */
+/*   Updated: 2024/06/08 17:33:04 by tofujiwa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+__attribute__((destructor))
+static void destructor() {
+    system("leaks -q philo");
+}
+
 
 //init_mainを全てmainで書く必要があるかも
 
@@ -62,6 +68,7 @@ int	sub_main(int argc, char **argv)
 		return (0);
 	philo->exec->start_time = get_time();
 	create_thread(philo);
+	free_all (philo, exec, fork, share);
 	return (1);
 }
 

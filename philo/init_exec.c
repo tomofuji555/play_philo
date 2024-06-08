@@ -32,7 +32,7 @@ t_exec	*init_exec(int argc, char **argv)
 		if (argc == 6)
 			exec[i].must_eat = ft_atoi (argv[5]);
 		else
-			exec[i].must_eat = 0;
+			exec[i].must_eat = -1;
 		if (!exec[i].num || !exec[i].die || !exec[i].eat || !exec[i].sleep)
 			return (NULL);
 		i++;

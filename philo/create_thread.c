@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_thread.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tofujiwa <tofujiwa@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: tofujiwa <tofujiwa@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 15:50:33 by username          #+#    #+#             */
-/*   Updated: 2024/06/02 16:58:34 by tofujiwa         ###   ########.fr       */
+/*   Updated: 2024/06/08 17:31:47 by tofujiwa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,11 @@ int	create_thread_wrap(pthread_t *thread, void *(*routine)(void *), void *arg)
 void	create_thread(t_philo *philo)
 {
 	int			i;
-	pthread_t	thread[philo->exec->num];
+	// pthread_t	thread[philo->exec->num];
+	pthread_t	*thread;
 
 	i = 0;
+	thread = (pthread_t *)malloc(sizeof(thread) * philo->exec->num);
 	// printf ("num: %d\n", philo->exec->num);
 	while (i < philo->exec->num)
 	{
@@ -40,4 +42,5 @@ void	create_thread(t_philo *philo)
 		pthread_join(thread[i], NULL); //waitみたいなもん↲
 		i++;
 	}
+	free(thread);
 }

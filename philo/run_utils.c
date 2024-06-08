@@ -31,6 +31,7 @@ void	do_eat(t_philo *philo, t_exec *exec)
 	printf("%lu %d is eating\n", \
 		philo->last_eat_time - exec->start_time, philo->id);
 	// msleep(exec->eat, philo, exec);
+	usleep(exec->eat * 1000);
 	philo->eat_count++;
 }
 
@@ -38,6 +39,7 @@ void	do_sleep(t_philo *philo, t_exec *exec)
 {
 	printf("%lu %d is sleeping\n", \
 		get_time() - exec->start_time, philo->id);
+	usleep(exec->sleep * 1000);
 	// msleep(exec->sleep, philo, exec);
 }
 

@@ -68,7 +68,7 @@ t_fork	*init_fork(t_exec *exec)
 	i = 0;
 	fork = (t_fork *)malloc(sizeof(t_fork) * (exec->num));
 	if (fork == NULL)
-		return(free_all(fork, NULL, NULL, NULL));
+		return(free_all(exec, NULL, NULL, NULL));
 	last_eat_id = set_last_eat_id_main(exec->num);
 	if (!last_eat_id)
 		return (free_all(fork, NULL, NULL, NULL));
